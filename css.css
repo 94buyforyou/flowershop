@@ -1,0 +1,494 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+p,
+a,
+input,
+label,
+textarea,
+span,
+ul,
+li {
+    font-family: "Open Sans", sans-serif;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.header1 .container-fluid,
+.header2 .container-fluid {
+    height: 100px;
+}
+
+input:-webkit-autofill {
+    /* 讓輸入框的自動填充的背景色為白色 */
+    box-shadow: 000 1000px #fff inset;
+    caret-color: #fff;
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+}
+
+body {
+    background-image: url("pic/background_image.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header1 {
+    display: block;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.header2 {
+    display: none;
+    height: 100px;
+}
+
+.navbar.navbar-expand-lg.fixed-top {
+    padding: 0 20px;
+    background-color: #ccd3d9;
+}
+
+.navbar.fixed-top {
+    padding: 0;
+    background-color: #ccd3d9;
+}
+
+.header1 .logo {
+    width: 250px;
+}
+
+.header2 .logo {
+    width: 250px;
+    margin: 0 auto; /* 居中對齊 */
+}
+
+.navbar-brand {
+    margin: 0;
+    position: relative;
+    left: 12px;
+}
+
+.header1 li {
+    text-align: center;
+    margin: 0 16px;
+    transition: transform 0.3s ease;
+}
+
+.header1 li:last-child {
+    cursor: pointer;
+}
+
+.header1 li:hover {
+    transform: translateY(-10px);
+    /* 當滑鼠移動到上方時向上浮動10px */
+}
+
+.header1 li:last-child:hover {
+    transform: none;
+    /* 避免最後一個 li 在 hover 時進行 transform 動作 */
+}
+
+.header2 .nav-item {
+    margin-bottom: 30px;
+}
+
+.header2 .nav-item {
+    display: inline-block;
+}
+
+.header2 .nav-item .nav-link {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    width: auto;
+}
+
+.header2 .nav-item .nav-link.p_practice {
+    cursor: pointer;
+}
+
+.header2 .nav-item a:hover,
+.header2 .nav-item .nav-link.p_practice:hover {
+    box-shadow: 0 1px 0 0 black;
+    transition: all 0.3s ease;
+}
+
+.header2 .nav-item.practice {
+    display: flex;
+    flex-direction: row;
+}
+
+.header2 .nav-item.practice .practice_works2 {
+    position: absolute;
+    left: 5.5rem;
+    opacity: 0;
+    visibility: hidden;
+    width: 140px;
+    text-align: center;
+    margin-left: 0.5rem;
+    padding: 0.2rem 1rem;
+    background-color: rgb(166, 228, 228);
+    display: inline-block;
+    flex-direction: column;
+}
+
+.header2 .nav-item.practice .practice_works2 a {
+    display: inline-block;
+    width: auto;
+    color: #474540;
+    text-decoration: none;
+}
+
+.header2 .nav-item.practice:hover .practice_works2 {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+
+.header1 .c {
+    font-size: 22px;
+    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Arial, "Noto Sans TC", "PingFang TC", PingFangTC,
+        PingFangTC-Regular, "Microsoft JhengHei", PMingLiU, sans-serif;
+}
+
+.header1 .e {
+    font-size: 16px;
+    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Arial, "Noto Sans TC", "PingFang TC", PingFangTC,
+        PingFangTC-Regular, "Microsoft JhengHei", PMingLiU, sans-serif;
+}
+
+.nav-link {
+    color: #474540;
+}
+
+.header1 nav p {
+    margin: 0;
+    padding: 0;
+}
+
+.form-control.me-2 {
+    border-radius: 20px;
+    height: 40px;
+    text-indent: 15px;
+    width: 250px;
+}
+
+.header1 li:last-child div:hover p {
+    box-shadow: 0 1px 0 0 black;
+    transition: all 0.3s ease;
+}
+
+.header1 li:last-child {
+    position: relative;
+}
+
+.practice_works {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100px;
+    padding: 1rem 1rem;
+    border-radius: 15%;
+}
+
+.practice_works a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.header1 li:last-child:hover .practice_works {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+
+#search {
+    width: 26px;
+    height: 26px;
+    background-image: url("pic/search_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    right: 55px;
+}
+
+.btn.btn-outline-success {
+    border-radius: 0;
+}
+
+.header_toolbar1 {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 25px;
+    /* 會員中心和購物車的左右間距 */
+    margin-left: -15px;
+}
+
+.header_toolbar2 {
+    display: flex;
+    gap: 25px; /* 按鈕之間的間距 */
+}
+
+.toolbar_icon {
+    width: 26px !important;
+    height: 26px;
+}
+
+.header_toolbar1_member {
+    position: relative;
+}
+
+.memberlist {
+    width: 85px;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    left: -28px;
+    top: 40px;
+    border-radius: 5px;
+    display: none;
+}
+
+.memberlist a {
+    text-decoration: none;
+    /* 移除超連結的底線 */
+    font-size: 14px;
+    color: #333;
+    /* 文字顏色 */
+}
+
+.member1 {
+    cursor: pointer;
+}
+
+#offcanvasNavbar {
+    background-color: #f4f2ec;
+}
+
+#offcanvasNavbarLabel {
+    font-size: 18px;
+}
+
+footer {
+    background-color: #ccd3d9;
+    padding-top: 80px;
+}
+
+footer img {
+    width: 250px;
+}
+
+footer .col-md-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 31.5em;
+}
+
+footer .col-md-3 div {
+    text-align: left;
+}
+
+footer .col-md-3 ul {
+    list-style-type: none;
+    margin: 16px 0 16px 0;
+}
+
+footer .col-md-12 ul {
+    margin: 0 auto;
+    /* 選單離網頁邊邊的距離 */
+    padding: 25px;
+    /* 選單的上下位置 */
+    display: grid;
+    grid-auto-flow: column;
+    /* 水平排列 */
+    grid-gap: 70px;
+    /* 設定間距 */
+    justify-content: center;
+    /* 水平置中 */
+    width: max-content;
+    /* 設定寬度為內容大小 */
+    list-style-type: none;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 499px) {
+    .header1 {
+        display: none;
+    }
+
+    .header2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header_toolbar2 {
+        visibility: hidden;
+    }
+
+    footer .col-md-12 ul {
+        grid-gap: 30px;
+    }
+
+    #time {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .header1 {
+        display: none;
+    }
+
+    .header2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    footer .col-md-12 ul {
+        grid-gap: 30px;
+    }
+
+    #time {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .header1 {
+        display: none;
+    }
+
+    .header2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #time {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header1 {
+        display: none;
+    }
+
+    .header2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #time {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .header1 .logo {
+        width: 200px;
+    }
+
+    .header1 .e {
+        font-size: 12px;
+    }
+
+    .header1 .c {
+        font-size: 16px;
+    }
+
+    .header1 li {
+        margin: 0 3px;
+    }
+
+    .form-control.me-2 {
+        width: 180px;
+    }
+
+    #time {
+        margin-top: 50px;
+    }
+
+    .practice_works {
+        left: -0.6rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1269px) {
+    .header1 .logo {
+        width: 220px;
+    }
+
+    .header1 .c {
+        font-size: 20px;
+    }
+
+    .header1 .e {
+        font-size: 12px;
+    }
+
+    .header1 li {
+        margin: 0 12px;
+    }
+
+    .form-control.me-2 {
+        width: 200px;
+    }
+}
+
+@media only screen and (min-width: 1270px) and (max-width: 1399px) {
+    .header1 .logo {
+        width: 230px;
+    }
+
+    .header1 .c {
+        font-size: 20px;
+    }
+
+    .header1 .e {
+        font-size: 14px;
+    }
+
+    .header1 li {
+        margin: 0 14px;
+    }
+
+    .form-control.me-2 {
+        width: 230px;
+    }
+}
