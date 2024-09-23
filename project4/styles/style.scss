@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn {
+    padding: 0.5rem 0.75rem;
+    border: none;
+    margin: 1rem 0.5rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+body {
+    background-color: #272727;
+    color: white;
+    font-family: "Baloo 2", cursive;
+
+    section.animation-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+        section.animation {
+            margin-top: 10vh;
+            height: 80vh;
+            border: 5px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .hero {
+                width: 100%;
+                height: 0;
+                border: 5px solid green;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: linear-gradient(
+                to right,
+                rgb(144, 144, 144),
+                black
+            );
+            z-index: -1;
+        }
+    }
+
+    header {
+        nav {
+            box-shadow: 0 8px 6px -6px black;
+            ul {
+                display: flex;
+                li {
+                    padding: 1rem;
+                    a {
+                        font-size: 1.15rem;
+                        transition: all 0.3s ease;
+                        &:hover {
+                            color: yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    main {
+        section.main-part {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            h1 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 1.15rem;
+            }
+
+            div.inputs {
+                width: 100%;
+                form {
+                    .class-credit {
+                        width: 15%;
+                    }
+                    input,
+                    select {
+                        font-size: 1.05rem;
+                        margin: 0.35rem;
+                        padding: 0.5rem;
+                        border: 0.25px solid rgb(39, 39, 21);
+                        border-radius: 0.25rem;
+                    }
+
+                    button {
+                        border: none;
+                        cursor: pointer;
+                        background-color: transparent;
+
+                        i {
+                            font-size: 1.25rem;
+                            pointer-events: none;
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            button.plus-btn {
+                width: 2.5rem;
+                margin: 3rem 0;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+                i {
+                    font-size: 2.5rem;
+                    color: white;
+                }
+            }
+
+            div.result {
+                width: 200px;
+                height: 200px;
+                padding: 5px 0px 0px 5px;
+                border: 3px solid red;
+                border-radius: 50%;
+                text-align: center;
+                animation-name: border_color;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+                p {
+                    margin-top: 30px;
+                }
+                h1#result-gpa {
+                    font-size: 3.5rem;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+@keyframes border_color {
+    0% {
+        border-color: #ff0000;
+    }
+
+    14% {
+        border-color: #ffa500;
+    }
+
+    28% {
+        border-color: #ffff00;
+    }
+
+    42% {
+        border-color: #008000;
+    }
+
+    56% {
+        border-color: #0000ff;
+    }
+
+    70% {
+        border-color: #4b0082;
+    }
+
+    84% {
+        border-color: #ee82ee;
+    }
+}

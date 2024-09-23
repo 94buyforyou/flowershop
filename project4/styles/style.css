@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  margin: 1rem 0.5rem;
+}
+.btn:hover {
+  cursor: pointer;
+}
+
+body {
+  background-color: #272727;
+  color: white;
+  font-family: "Baloo 2", cursive;
+}
+body section.animation-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+}
+body section.animation-wrapper section.animation {
+  margin-top: 10vh;
+  height: 80vh;
+  border: 5px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body section.animation-wrapper section.animation .hero {
+  width: 100%;
+  height: 0;
+  border: 5px solid green;
+}
+body section.animation-wrapper section.animation .hero img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body section.animation-wrapper .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: linear-gradient(to right, rgb(144, 144, 144), black);
+  z-index: -1;
+}
+body header nav {
+  box-shadow: 0 8px 6px -6px black;
+}
+body header nav ul {
+  display: flex;
+}
+body header nav ul li {
+  padding: 1rem;
+}
+body header nav ul li a {
+  font-size: 1.15rem;
+  transition: all 0.3s ease;
+}
+body header nav ul li a:hover {
+  color: yellow;
+}
+body main section.main-part {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+body main section.main-part h1 {
+  font-size: 3rem;
+}
+body main section.main-part p {
+  font-size: 1.15rem;
+}
+body main section.main-part div.inputs {
+  width: 100%;
+}
+body main section.main-part div.inputs form .class-credit {
+  width: 15%;
+}
+body main section.main-part div.inputs form input,
+body main section.main-part div.inputs form select {
+  font-size: 1.05rem;
+  margin: 0.35rem;
+  padding: 0.5rem;
+  border: 0.25px solid rgb(39, 39, 21);
+  border-radius: 0.25rem;
+}
+body main section.main-part div.inputs form button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+body main section.main-part div.inputs form button i {
+  font-size: 1.25rem;
+  pointer-events: none;
+  color: white;
+}
+body main section.main-part button.plus-btn {
+  width: 2.5rem;
+  margin: 3rem 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+body main section.main-part button.plus-btn i {
+  font-size: 2.5rem;
+  color: white;
+}
+body main section.main-part div.result {
+  width: 200px;
+  height: 200px;
+  padding: 5px 0px 0px 5px;
+  border: 3px solid red;
+  border-radius: 50%;
+  text-align: center;
+  animation-name: border_color;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+body main section.main-part div.result p {
+  margin-top: 30px;
+}
+body main section.main-part div.result h1#result-gpa {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+@keyframes border_color {
+  0% {
+    border-color: #ff0000;
+  }
+  14% {
+    border-color: #ffa500;
+  }
+  28% {
+    border-color: #ffff00;
+  }
+  42% {
+    border-color: #008000;
+  }
+  56% {
+    border-color: #0000ff;
+  }
+  70% {
+    border-color: #4b0082;
+  }
+  84% {
+    border-color: #ee82ee;
+  }
+}/*# sourceMappingURL=style.css.map */
