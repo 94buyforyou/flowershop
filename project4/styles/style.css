@@ -88,26 +88,26 @@ body main section.main-part h1 {
 body main section.main-part p {
   font-size: 1.15rem;
 }
-body main section.main-part div.inputs {
+body main section.main-part div.all-inputs {
   width: 100%;
 }
-body main section.main-part div.inputs form .class-credit {
+body main section.main-part div.all-inputs form .class-credit {
   width: 15%;
 }
-body main section.main-part div.inputs form input,
-body main section.main-part div.inputs form select {
+body main section.main-part div.all-inputs form input,
+body main section.main-part div.all-inputs form select {
   font-size: 1.05rem;
   margin: 0.35rem;
   padding: 0.5rem;
   border: 0.25px solid rgb(39, 39, 21);
   border-radius: 0.25rem;
 }
-body main section.main-part div.inputs form button {
+body main section.main-part div.all-inputs form button {
   border: none;
   cursor: pointer;
   background-color: transparent;
 }
-body main section.main-part div.inputs form button i {
+body main section.main-part div.all-inputs form button i {
   font-size: 1.25rem;
   pointer-events: none;
   color: white;
