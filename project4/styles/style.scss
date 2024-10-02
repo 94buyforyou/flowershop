@@ -160,6 +160,15 @@ body {
     }
 }
 
+@keyframes scaleUP {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
 @keyframes border_color {
     0% {
         border-color: #ff0000;
