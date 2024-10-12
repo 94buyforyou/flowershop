@@ -325,3 +325,186 @@ allTrash.forEach((trash) => {
         setGPA();
     });
 });
+
+//分數排序
+let btn1 = document.querySelector(".btndown");
+let btn2 = document.querySelector(".btnup");
+btn1.addEventListener("click", () => {
+    reline("down");
+});
+btn2.addEventListener("click", () => {
+    reline("up");
+});
+
+function reline(direction) {
+    let graders = document.querySelectorAll("div.grader");
+    let objectArray = [];
+
+    for (let i = 0; i < graders.length; i++) {
+        let class_name = graders[i].children[0].value;
+        let class_number = graders[i].children[1].value;
+        let class_credit = graders[i].children[2].value;
+        let class_grade = graders[i].children[3].value;
+
+        if (
+            !(
+                class_name == "" &&
+                class_number == "" &&
+                class_credit == "" &&
+                class_grade == ""
+            )
+        ) {
+            let class_object = {
+                class_name,
+                class_number,
+                class_credit,
+                class_grade,
+            };
+            objectArray.push(class_object);
+        }
+    }
+
+    //取得objectarray後 把成績的ABCD(string)轉換成數字
+    for (let i = 0; i < objectArray.length; i++) {
+        objectArray[i].class_grade_number = convertor(
+            objectArray[i].class_grade
+        );
+    }
+
+    objectArray = mergeSort(objectArray);
+    if (direction == "down") {
+        objectArray = objectArray.reverse();
+    }
+
+    //根據objectArray來更新網頁
+    let allInputs = document.querySelector(".all-inputs");
+    allInputs.innerHTML = "";
+
+    for (let i = 0; i < objectArray.length; i++) {
+        allInputs.innerHTML += `<form>
+            <div class="grader">
+                <input
+                    type="text"
+                    placeholder="class category"
+                    class="class-type"
+                    list="opt"
+                    value=${objectArray[i].class_name}
+                /><!--
+                --><input
+                    type="text"
+                    placeholder="class number"
+                    class="class-number"
+                    value=${objectArray[i].class_number}
+                /><!--
+                --><input
+                    type="number"
+                    placeholder="credits"
+                    min="0"
+                    max="6"
+                    class="class-credit"
+                    value=${objectArray[i].class_credit}
+                /><!--
+                --><select name="select" class="select">
+                    <option value=""></option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="D-">D-</option>
+                    <option value="F">F</option></select
+                ><!--
+                --><button class="trash-button">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            </form>`;
+    }
+
+    graders = document.querySelectorAll("div.grader");
+    for (let i = 0; i < graders.length; i++) {
+        graders[i].children[3].value = objectArray[i].class_grade;
+    }
+
+    //添加排序後 select的顏色監聽事件
+    allSelects = document.querySelectorAll("select");
+    allSelects.forEach((select) => {
+        changeColor(select);
+        select.addEventListener("change", (e) => {
+            setGPA();
+            changeColor(e.target);
+        });
+    });
+
+    //添加排序後 credits的GPA事件監聽
+    let allCredits = document.querySelectorAll(".class-credit");
+    allCredits.forEach((credit) => {
+        credit.addEventListener("change", () => {
+            setGPA();
+        });
+    });
+
+    //添加排序後 垃圾筒的功能
+    let allTrash = document.querySelectorAll(".trash-button");
+    allTrash.forEach((trash) => {
+        trash.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.target.parentElement.parentElement.classList.add("remove");
+        });
+    });
+
+    allTrash.forEach((trash) => {
+        let form = trash.parentElement.parentElement;
+        form.addEventListener("transitionend", (e) => {
+            e.target.remove();
+            setGPA();
+        });
+    });
+}
+
+function merge(a1, a2) {
+    let result = [];
+    let i = 0;
+    let j = 0;
+
+    while (i < a1.length && j < a2.length) {
+        if (a1[i].class_grade_number > a2[j].class_grade_number) {
+            result.push(a2[j]);
+            j++;
+        } else {
+            result.push(a1[i]);
+            i++;
+        }
+    }
+
+    while (i < a1.length) {
+        result.push(a1[i]);
+        i++;
+    }
+    while (j < a2.length) {
+        result.push(a2[j]);
+        j++;
+    }
+
+    return result;
+}
+
+function mergeSort(arr) {
+    if (arr.length == 0) {
+        return;
+    }
+
+    if (arr.length == 1) {
+        return arr;
+    } else {
+        let middle = Math.floor(arr.length / 2);
+        let left = arr.slice(0, middle);
+        let right = arr.slice(middle, arr.length);
+        return merge(mergeSort(left), mergeSort(right));
+    }
+}
