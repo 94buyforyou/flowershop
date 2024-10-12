@@ -42,9 +42,17 @@
 
 // 禁止整個網站使用Enter
 window.addEventListener("keypress", (e) => {
-    if (e.ket == "Enter") {
+    if (e.key == "Enter") {
         e.preventDefault();
     }
+});
+
+// 防止FORM內部的BUTTON交出表單
+let allButtons = document.querySelectorAll("button");
+allButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        e.preventDefault();
+    });
 });
 
 function convertor(grade) {
@@ -166,16 +174,19 @@ addButton.addEventListener("click", () => {
     let newInput1 = document.createElement("input");
     newInput1.setAttribute("type", "text");
     newInput1.setAttribute("list", "opt");
+    newInput1.setAttribute("placeholder", "class category");
     newInput1.classList.add("class-type");
 
     let newInput2 = document.createElement("input");
     newInput2.setAttribute("type", "text");
+    newInput2.setAttribute("placeholder", "class number");
     newInput2.classList.add("class-number");
 
     let newInput3 = document.createElement("input");
     newInput3.setAttribute("type", "number");
     newInput3.setAttribute("min", "0");
     newInput3.setAttribute("max", "6");
+    newInput3.setAttribute("placeholder", "credits");
     newInput3.classList.add("class-credit");
     newInput3.addEventListener("change", () => {
         setGPA();
@@ -276,6 +287,19 @@ addButton.addEventListener("click", () => {
     newItag.classList.add("fa-trash");
     newButton.appendChild(newItag);
 
+    newButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.target.parentElement.parentElement.style.animation =
+            "scaleDown 0.5s ease forwards";
+        e.target.parentElement.parentElement.addEventListener(
+            "animationend",
+            (e) => {
+                e.target.remove();
+                setGPA();
+            }
+        );
+    });
+
     newDiv.appendChild(newInput1);
     newDiv.appendChild(newInput2);
     newDiv.appendChild(newInput3);
@@ -285,4 +309,19 @@ addButton.addEventListener("click", () => {
     newForm.appendChild(newDiv);
     document.querySelector(".all-inputs").appendChild(newForm);
     newForm.style.animation = "scaleUP 0.5s ease forwards";
+});
+
+let allTrash = document.querySelectorAll(".trash-button");
+allTrash.forEach((trash) => {
+    trash.addEventListener("click", (e) => {
+        e.target.parentElement.parentElement.classList.add("remove");
+    });
+});
+
+allTrash.forEach((trash) => {
+    let form = trash.parentElement.parentElement;
+    form.addEventListener("transitionend", (e) => {
+        e.target.remove();
+        setGPA();
+    });
 });
