@@ -295,6 +295,7 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
                                 <div class="practice_works">
                                     <a href="index.php">花顏巧語</a>
                                     <a href="./password/index.html" target="_blank">終極密碼</a>
+                                    <a href="./project4/index.html" target="_blank">成績計算網站</a>
                                 </div>
                             </li>
                         </ul>
@@ -396,6 +397,7 @@ $_SESSION['prev_page'] = $_SERVER['REQUEST_URI'];
                                 <div class="practice_works2">
                                     <a href="index.php">花顏巧語</a>
                                     <a href="./password/index.html" target="_blank">終極密碼</a>
+                                    <a href="./project4/index.html" target="_blank">成績計算網站</a>
                                 </div>
                             </li>
                             <li class="nav-item">

@@ -126,9 +126,21 @@ body {
     cursor: pointer;
 }
 
+/* 功能列及練習作品4個字hover */
 .header2 .nav-item a:hover,
-.header2 .nav-item .nav-link.p_practice:hover {
-    box-shadow: 0 1px 0 0 black;
+.header2 .nav-item.practice .nav-link.p_practice:hover,
+.header2 .nav-item.practice .practice_works2 a:hover {
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 1px; /* 可以調整線條的粗細 */
+    text-underline-offset: 3px; /* 控制底線距離文字的距離 */
+    transition: all 0.3s ease;
+}
+
+/* 滑鼠移動到練習作品後顯示內容方框 */
+.header2 .nav-item.practice:hover .practice_works2 {
+    opacity: 1;
+    visibility: visible;
     transition: all 0.3s ease;
 }
 
@@ -156,12 +168,6 @@ body {
     width: auto;
     color: #474540;
     text-decoration: none;
-}
-
-.header2 .nav-item.practice:hover .practice_works2 {
-    opacity: 1;
-    visibility: visible;
-    transition: all 0.3s ease;
 }
 
 .header1 .c {
@@ -211,7 +217,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: white;
-    width: 100px;
+    width: 180px;
     padding: 1rem 1rem;
     border-radius: 15%;
 }
@@ -220,6 +226,14 @@ body {
     text-decoration: none;
     font-size: 16px;
     color: #333;
+}
+
+.practice_works a:hover {
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 1px; /* 可以調整線條的粗細 */
+    text-underline-offset: 2px; /* 控制底線距離文字的距離 */
+    transition: all 0.3s ease;
 }
 
 .header1 li:last-child:hover .practice_works {
