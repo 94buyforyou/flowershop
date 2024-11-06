@@ -7,15 +7,20 @@
         <link rel="stylesheet" href="styles/style.css" />
     </head>
     <body>
+        <div class="scoreBox">
+            <p id="myScore"></p>
+            <p id="myScore2"></p>
+        </div>
+
+        <button onclick="location.reload();" id="start">開始新遊戲</button>
+
         <canvas
             id="myCanvas"
             width="320"
             height="320"
             style="background-color: black"
         ></canvas>
-        <p id="myScore"></p>
-        <p id="myScore2"></p>
-        <button onclick="location.reload();" id="start">開始新遊戲</button>
+
         <script src="app.js"></script>
     </body>
 </html>
