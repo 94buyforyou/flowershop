@@ -161,6 +161,7 @@ body {
     background-color: rgb(166, 228, 228);
     display: inline-block;
     flex-direction: column;
+    border-radius: 5%;
 }
 
 .header2 .nav-item.practice .practice_works2 a {
@@ -216,6 +217,7 @@ body {
     visibility: hidden;
     display: flex;
     flex-direction: column;
+    gap: 5px;
     background-color: white;
     width: 180px;
     padding: 1rem 1rem;
