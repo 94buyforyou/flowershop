@@ -38,7 +38,7 @@ class Fruit {
 
     drawFruit() {
         //果實的樣式及位置
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = "pink";
         ctx.fillRect(this.x, this.y, unit, unit);
     }
 
@@ -51,7 +51,6 @@ class Fruit {
             //檢查新果實的隨機位置是否和蛇的身體重疊
             for (let i = 0; i < snake.length; i++) {
                 if (new_x == snake[i].x && new_y == snake[i].y) {
-                    console.log("重疊到了");
                     overlapping = true;
                     return;
                 } else {
@@ -63,7 +62,6 @@ class Fruit {
         do {
             new_x = Math.floor(Math.random() * column) * unit;
             new_y = Math.floor(Math.random() * row) * unit;
-            console.log("新果實位置" + new_x + "," + new_y);
             checkOverlap(new_x, new_y);
         } while (overlapping); //若沒有重疊 則取得新果實的XY座標
 
@@ -77,6 +75,7 @@ creakSnake();
 let myFruit = new Fruit();
 window.addEventListener("keydown", changeDirection);
 let d = "Right"; //設定初始移動方向
+
 function changeDirection(e) {
     //改變方向
     if (e.key == "ArrowLeft" && d != "Right") {
@@ -92,6 +91,12 @@ function changeDirection(e) {
     //每次按上下左右之後，下一幀被畫出來之前，不接受任何keydown事件(不能再改變方向)，防止蛇在重新畫出來之前自殺
     window.removeEventListener("keydown", changeDirection);
 }
+
+let score = 0;
+let highestScore;
+loadHighestScore();
+document.getElementById("myScore").innerHTML = "遊戲分數: " + score;
+document.getElementById("myScore2").innerHTML = "最高分數: " + highestScore;
 
 function draw() {
     //每次畫圖之前 確認蛇有沒有咬到自己
@@ -111,9 +116,9 @@ function draw() {
     for (let i = 0; i < snake.length; i++) {
         //畫出蛇
         if (i == 0) {
-            ctx.fillStyle = "lightgreen"; //頭的顏色
+            ctx.fillStyle = "red"; //頭的顏色
         } else {
-            ctx.fillStyle = "lightblue"; //其他的顏色
+            ctx.fillStyle = "lightgreen"; //其他的顏色
         }
         ctx.strokeStyle = "white"; //每一格的邊框顏色
 
@@ -162,6 +167,11 @@ function draw() {
     //判斷蛇是否有吃到果實
     if (snake[0].x == myFruit.x && snake[0].y == myFruit.y) {
         myFruit.pickALocation();
+        score++;
+        setHighestScore(score);
+        document.getElementById("myScore").innerHTML = "遊戲分數: " + score;
+        document.getElementById("myScore2").innerHTML =
+            "最高分數: " + highestScore;
     } else {
         snake.pop();
     }
@@ -171,3 +181,19 @@ function draw() {
 }
 
 let myGame = setInterval(draw, 75);
+
+function loadHighestScore() {
+    //進網頁時．取得歷史最高分
+    if (localStorage.getItem("highestScore") == null) {
+        highestScore = 0;
+    } else {
+        highestScore = Number(localStorage.getItem("highestScore"));
+    }
+}
+
+function setHighestScore(score) {
+    if (score > highestScore) {
+        localStorage.setItem("highestScore", score);
+        highestScore = score;
+    }
+}
