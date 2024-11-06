@@ -28,7 +28,19 @@ snake[3] = {
     y: 0,
 };
 
+window.addEventListener("keydown", changeDirection);
 let d = "Right"; //設定初始移動方向
+function changeDirection(e) {
+    if (e.key == "ArrowLeft" && d != "Right") {
+        d = "Left";
+    } else if (e.key == "ArrowRight" && d != "Left") {
+        d = "Right";
+    } else if (e.key == "ArrowUp" && d != "Down") {
+        d = "Up";
+    } else if (e.key == "ArrowDown" && d != "Up") {
+        d = "Down";
+    }
+}
 
 function draw() {
     ctx.fillStyle = "black";
