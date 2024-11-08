@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh; /* 設置為螢幕高度 */
+    height: 100dvh; /* 設置為螢幕高度 */
     overflow: hidden; /* 防止出現滾動條 */
 }
 
@@ -26,7 +26,7 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
-    flex: 4;
+    flex: 3;
 }
 
 .scoreBox {
@@ -80,16 +80,24 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    flex: 6;
+    flex: 7;
 }
 
 .arrowBox2 {
     display: flex;
     flex-wrap: nowrap;
-    gap: 9.5vh;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
 }
 
 .arrowBox i {
     color: #b2b0ba;
-    font-size: 9.5vh;
+    font-size: 9.5dvh;
+}
+
+@media (max-height: 600px) {
+    .arrowBox i {
+        font-size: 8.5dvh;
+    }
 }
