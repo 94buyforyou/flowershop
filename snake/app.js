@@ -74,6 +74,30 @@ class Fruit {
 creakSnake();
 let myFruit = new Fruit();
 window.addEventListener("keydown", changeDirection);
+
+// 模擬方向按鍵的函數
+function simulateButtonPress(key) {
+    const simulatedEvent = { key: key };
+    changeDirection(simulatedEvent);
+}
+
+// 添加按鈕事件
+document.getElementById("up").addEventListener("click", function () {
+    simulateButtonPress("ArrowUp");
+});
+
+document.getElementById("down").addEventListener("click", function () {
+    simulateButtonPress("ArrowDown");
+});
+
+document.getElementById("left").addEventListener("click", function () {
+    simulateButtonPress("ArrowLeft");
+});
+
+document.getElementById("right").addEventListener("click", function () {
+    simulateButtonPress("ArrowRight");
+});
+
 let d = "Right"; //設定初始移動方向
 
 function changeDirection(e) {

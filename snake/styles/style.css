@@ -10,35 +10,86 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh; /* 設置為螢幕高度 */
+    overflow: hidden; /* 防止出現滾動條 */
 }
 
-#myCanvas {
-    margin-top: 25px;
-    border: 5px solid blue;
-    /* position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 4;
 }
 
 .scoreBox {
-    margin-top: 15px;
     display: flex;
-    gap: 50px;
     flex-wrap: nowrap;
+    gap: 50px;
 }
 
 #myScore,
 #myScore2 {
     color: white;
     font-size: 1.5rem;
-    padding: 10px;
 }
 
 #start {
-    padding: 0.25rem 0.5rem;
-    background-color: yellow;
-    font-size: 1.15rem;
     display: block;
-    margin-top: 15px;
+    padding: 0.5rem 1rem;
+    width: 150px;
+    background-color: #f0c419;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#start:hover {
+    background-color: #ffd700; /* 懸停時變色 */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* 懸停時加深陰影 */
+}
+
+#start:active {
+    background-color: #e0b800; /* 點擊時變色 */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* 點擊時減少陰影 */
+}
+
+.top p {
+    color: white;
+}
+
+#myCanvas {
+    border: 5px solid blue;
+}
+
+.arrowBox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex: 6;
+}
+
+.arrowBox2 {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 9.5vh;
+}
+
+.arrowBox i {
+    color: #b2b0ba;
+    font-size: 9.5vh;
 }
