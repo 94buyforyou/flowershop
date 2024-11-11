@@ -11,6 +11,7 @@ let ground_x = 100;
 let ground_y = 500;
 let ground_height = 5;
 let brickArray = [];
+let count = 0;
 
 function getRandomNumber(min, max, excludeMin, excludeMax) {
     // 最小值, 最大值, 排除的最小值, 排除的最大值
@@ -29,11 +30,7 @@ class Brick {
         this.width = 50;
         this.height = 50;
         brickArray.push(this);
-    }
-
-    drawBrick() {
-        ctx.fillStyle = "white";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        this.visible = true;
     }
 
     pickALocation() {
@@ -69,6 +66,20 @@ class Brick {
         this.x = new_x;
         this.y = new_y;
     }
+
+    drawBrick() {
+        ctx.fillStyle = "white";
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+
+    touchingBall(ballX, ballY) {
+        return (
+            ballX >= this.x - radius &&
+            ballX <= this.x + this.width + radius &&
+            ballY >= this.y - radius &&
+            ballY <= this.y + this.height + radius
+        );
+    }
 }
 
 for (let i = 0; i < 10; i++) {
@@ -100,6 +111,34 @@ function fix_dpi() {
 function drawCircle() {
     // 修正 DPI 確保畫布解析度適應高 DPI 設備
     fix_dpi();
+
+    // 確認是否撞到方塊
+    brickArray.forEach((brick) => {
+        if (brick.visible && brick.touchingBall(circle_x, circle_y)) {
+            count++; // 若有撞到 count+1
+            brick.visible = false; // 若有撞到方塊變不可見
+            // 改變x,y方向的速度
+            // 從下往上撞
+            if (circle_y >= brick.y + brick.height) {
+                ySpeed *= -1;
+                // 從上往下撞
+            } else if (circle_y <= brick.y) {
+                ySpeed *= -1;
+                // 從左往右撞
+            } else if (circle_x <= brick.x) {
+                xSpeed *= -1;
+                // 從右往左撞
+            } else if (circle_x >= brick.x + brick.width) {
+                xSpeed *= -1;
+            }
+
+            if (count == 10) {
+                //當撞擊10次遊戲結束
+                alert("Game Over");
+                clearInterval(game);
+            }
+        }
+    });
 
     // 確認是否撞到地板
     if (
@@ -147,7 +186,9 @@ function drawCircle() {
 
     // 畫出方塊
     brickArray.forEach((brick) => {
-        brick.drawBrick();
+        if (brick.visible) {
+            brick.drawBrick();
+        }
     });
 
     // 畫出圓
