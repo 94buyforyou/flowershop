@@ -10,6 +10,71 @@ let ySpeed = 20;
 let ground_x = 100;
 let ground_y = 500;
 let ground_height = 5;
+let brickArray = [];
+
+function getRandomNumber(min, max, excludeMin, excludeMax) {
+    // 最小值, 最大值, 排除的最小值, 排除的最大值
+    // 生成隨機數字來當方塊的XY座標
+    let num;
+    do {
+        num = min + Math.floor(Math.random() * (max - min));
+    } while (num >= excludeMin && num <= excludeMax); // 如果生成的數字在排除區間內，則重新生成
+    return num;
+}
+
+class Brick {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.width = 50;
+        this.height = 50;
+        brickArray.push(this);
+    }
+
+    drawBrick() {
+        ctx.fillStyle = "white";
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+
+    pickALocation() {
+        //取得方塊座標
+        let overlapping = false;
+        let new_x;
+        let new_y;
+
+        function checkOverlap(new_x, new_y) {
+            //判斷方塊是否重疊
+            for (let i = 0; i < brickArray.length; i++) {
+                if (
+                    new_x >= brickArray[i].x - 50 &&
+                    new_x <= brickArray[i].x + 50 &&
+                    new_y >= brickArray[i].y - 50 &&
+                    new_y <= brickArray[i].y + 50
+                ) {
+                    overlapping = true;
+                    return;
+                } else {
+                    overlapping = false;
+                }
+            }
+        }
+
+        do {
+            new_x = getRandomNumber(0, 950);
+            new_y = getRandomNumber(0, 550, 450, 505); // 避免方塊Y座標 在 450 到 505 之間，避免和地板重疊
+            console.log(new_x, new_y);
+            checkOverlap(new_x, new_y);
+        } while (overlapping);
+
+        this.x = new_x;
+        this.y = new_y;
+    }
+}
+
+for (let i = 0; i < 10; i++) {
+    let newBrick = new Brick();
+    newBrick.pickALocation();
+}
 
 c.addEventListener("mousemove", (e) => {
     ground_x = e.clientX;
@@ -79,6 +144,11 @@ function drawCircle() {
     // 畫出地板
     ctx.fillStyle = "red";
     ctx.fillRect(ground_x, ground_y, 200, ground_height); // x座標, y座標, 長度, 寬度
+
+    // 畫出方塊
+    brickArray.forEach((brick) => {
+        brick.drawBrick();
+    });
 
     // 畫出圓
     ctx.beginPath();
