@@ -157,7 +157,7 @@ function drawCircle() {
         circle_y <= ground_y + 5
     ) {
         if (ySpeed > 0) {
-            circle_y = ground_y - radius; // 讓球的位置更接近地板，因為有步驟檢測，
+            circle_y = ground_y - radius; // 讓球的位置更接近地板
             ySpeed *= -1; // 反轉速度
         }
     }
@@ -177,7 +177,7 @@ function drawCircle() {
         ySpeed *= -1;
     }
 
-    // 確認是否撞到下邊牆壁
+    // 撞到底邊不反彈 生命-1
     // 若hasCollided為不為false 則不會執行
     if (circle_y >= c.height - radius && !hasCollided) {
         hasCollided = true; // 每當碰撞一次 hasCollided 變成 true
