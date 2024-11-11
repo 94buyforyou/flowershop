@@ -8,19 +8,19 @@ let radius = 20;
 let xSpeed = 20;
 let ySpeed = 20;
 let ground_x = 100;
-let ground_y = 500;
+let ground_y = 550;
 let ground_height = 5;
 let brickArray = [];
 let count = 0;
+let life = 5;
+let hasCollided = false; // 設定碰撞變數
 
-function getRandomNumber(min, max, excludeMin, excludeMax) {
+document.getElementById("myLife").innerHTML = "剩餘生命: " + life;
+
+function getRandomNumber(min, max) {
     // 最小值, 最大值, 排除的最小值, 排除的最大值
     // 生成隨機數字來當方塊的XY座標
-    let num;
-    do {
-        num = min + Math.floor(Math.random() * (max - min));
-    } while (num >= excludeMin && num <= excludeMax); // 如果生成的數字在排除區間內，則重新生成
-    return num;
+    return min + Math.floor(Math.random() * (max - min));
 }
 
 class Brick {
@@ -58,7 +58,7 @@ class Brick {
 
         do {
             new_x = getRandomNumber(0, 950);
-            new_y = getRandomNumber(0, 550, 450, 505); // 避免方塊Y座標 在 450 到 505 之間，避免和地板重疊
+            new_y = getRandomNumber(0, 400);
             console.log(new_x, new_y);
             checkOverlap(new_x, new_y);
         } while (overlapping);
@@ -82,13 +82,22 @@ class Brick {
     }
 }
 
+// 畫出10個方塊
 for (let i = 0; i < 10; i++) {
     let newBrick = new Brick();
     newBrick.pickALocation();
 }
 
-c.addEventListener("mousemove", (e) => {
-    ground_x = e.clientX;
+window.addEventListener("mousemove", (e) => {
+    //地板X座標等於滑鼠X座標 - 畫布居中左邊空白寬度
+    ground_x = e.clientX - (window.innerWidth - c.width) / 2;
+
+    // 確保地板不會超出畫布的左右邊界
+    if (ground_x < 0) {
+        ground_x = 0;
+    } else if (ground_x > c.width - 200) {
+        ground_x = c.width - 200;
+    }
 });
 
 // 獲取設備的 DPI
@@ -134,7 +143,7 @@ function drawCircle() {
 
             if (count == 10) {
                 //當撞擊10次遊戲結束
-                alert("Game Over");
+                alert("Congratulations");
                 clearInterval(game);
             }
         }
@@ -145,32 +154,51 @@ function drawCircle() {
         circle_x >= ground_x - radius &&
         circle_x <= ground_x + 200 + radius &&
         circle_y >= ground_y - radius &&
-        circle_y <= ground_y + radius
+        circle_y <= ground_y + 5
     ) {
         if (ySpeed > 0) {
-            // 當球從上往下撞擊地板時，讓circle_y-40，避免球卡在地板中間造成來回彈跳
-            circle_y -= 40;
-        } else {
-            circle_y += 40; // 當球從下往上撞擊地板時，讓circle_y+40，避免球卡在地板中間造成來回彈跳
+            circle_y = ground_y - radius; // 讓球的位置更接近地板，因為有步驟檢測，
+            ySpeed *= -1; // 反轉速度
         }
-        ySpeed *= -1;
     }
 
     // 確認是否撞到右邊牆壁
     if (circle_x >= c.width - radius) {
         xSpeed *= -1;
     }
+
     // 確認是否撞到左邊牆壁
     if (circle_x <= radius) {
         xSpeed *= -1;
     }
+
     // 確認是否撞到上邊牆壁
     if (circle_y <= radius) {
         ySpeed *= -1;
     }
+
     // 確認是否撞到下邊牆壁
-    if (circle_y >= c.height - radius) {
-        ySpeed *= -1;
+    // 若hasCollided為不為false 則不會執行
+    if (circle_y >= c.height - radius && !hasCollided) {
+        hasCollided = true; // 每當碰撞一次 hasCollided 變成 true
+        life--;
+        document.getElementById("myLife").innerHTML = "剩餘生命: " + life;
+        if (life == 0) {
+            document.getElementById("myLife").innerHTML = "剩餘生命: " + life;
+            setTimeout(() => {
+                alert("Game Over");
+                clearInterval(game);
+            }, 100); // 設定延遲確保顯示0後再執行遊戲結束
+        } else {
+            setTimeout(() => {
+                // 重置球的位置和速度
+                circle_x = 160;
+                circle_y = 60;
+                xSpeed = 20;
+                ySpeed = 20;
+                hasCollided = false;
+            }, 200);
+        }
     }
 
     circle_x += xSpeed;
