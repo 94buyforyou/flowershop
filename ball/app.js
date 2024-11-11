@@ -5,6 +5,8 @@ const ctx = c.getContext("2d");
 let circle_x = 160;
 let circle_y = 60;
 let radius = 20;
+let xSpeed = 20;
+let ySpeed = 20;
 // 獲取設備的 DPI
 let dpi = window.devicePixelRatio;
 
@@ -25,6 +27,26 @@ function fix_dpi() {
 function drawCircle() {
     // 修正 DPI 確保畫布解析度適應高 DPI 設備
     fix_dpi();
+
+    // 確認是否撞到右邊牆壁
+    if (circle_x >= c.width - radius) {
+        xSpeed *= -1;
+    }
+    // 確認是否撞到左邊牆壁
+    if (circle_x <= radius) {
+        xSpeed *= -1;
+    }
+    // 確認是否撞到上邊牆壁
+    if (circle_y <= radius) {
+        ySpeed *= -1;
+    }
+    // 確認是否撞到下邊牆壁
+    if (circle_y >= c.height - radius) {
+        ySpeed *= -1;
+    }
+
+    circle_x += xSpeed;
+    circle_y += ySpeed;
 
     // 畫出黑色背景
     ctx.fillStyle = "black";
