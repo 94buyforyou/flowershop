@@ -9,17 +9,61 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100dvh; /* 設置為螢幕高度 */
+    overflow: hidden; /* 防止出現滾動條 */
 }
 
 .container {
     display: flex;
-    flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 5;
+}
+
+#myLife {
+    font-size: 1.5rem;
+}
+
+#start {
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 150px;
+    background-color: #f0c419;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#start:hover {
+    background-color: #ffd700; /* 懸停時變色 */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* 懸停時加深陰影 */
+}
+
+#start:active {
+    background-color: #e0b800; /* 點擊時變色 */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* 點擊時減少陰影 */
 }
 
 #myCanvas {
     background-color: black;
     width: 1000px;
     height: 600px;
+}
+
+.bottom {
+    display: flex;
+    flex: 5;
 }

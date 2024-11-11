@@ -43,10 +43,10 @@ class Brick {
             //判斷方塊是否重疊
             for (let i = 0; i < brickArray.length; i++) {
                 if (
-                    new_x >= brickArray[i].x - 50 &&
-                    new_x <= brickArray[i].x + 50 &&
-                    new_y >= brickArray[i].y - 50 &&
-                    new_y <= brickArray[i].y + 50
+                    new_x >= brickArray[i].x - brickArray[i].width &&
+                    new_x <= brickArray[i].x + brickArray[i].width &&
+                    new_y >= brickArray[i].y - brickArray[i].height &&
+                    new_y <= brickArray[i].y + brickArray[i].height
                 ) {
                     overlapping = true;
                     return;
@@ -59,7 +59,6 @@ class Brick {
         do {
             new_x = getRandomNumber(0, 950);
             new_y = getRandomNumber(0, 400);
-            console.log(new_x, new_y);
             checkOverlap(new_x, new_y);
         } while (overlapping);
 
@@ -89,7 +88,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 window.addEventListener("mousemove", (e) => {
-    //地板X座標等於滑鼠X座標 - 畫布居中左邊空白寬度
+    //地板X座標等於滑鼠X座標 - 畫布居中後左邊空白寬度
     ground_x = e.clientX - (window.innerWidth - c.width) / 2;
 
     // 確保地板不會超出畫布的左右邊界
