@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+#myCanvas {
+    background-color: black;
+    width: 1000px;
+    height: 600px;
+}
