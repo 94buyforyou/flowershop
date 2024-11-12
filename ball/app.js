@@ -5,11 +5,11 @@ const ctx = c.getContext("2d");
 let circle_x = 160;
 let circle_y = 60;
 let radius = 20;
-let xSpeed = 20;
-let ySpeed = 20;
+let xSpeed = 15;
+let ySpeed = 15;
 let ground_x = 100;
 let ground_y = 550;
-let ground_height = 5;
+let ground_height = 20;
 let brickArray = [];
 let count = 0;
 let life = 5;
@@ -153,10 +153,10 @@ function drawCircle() {
         circle_x >= ground_x - radius &&
         circle_x <= ground_x + 200 + radius &&
         circle_y >= ground_y - radius &&
-        circle_y <= ground_y + 5
+        circle_y <= ground_y + 20
     ) {
         if (ySpeed > 0) {
-            circle_y = ground_y - radius; // 讓球的位置更接近地板
+            circle_y = ground_y - 30; // 讓球的位置更接近地板
             ySpeed *= -1; // 反轉速度
         }
     }
@@ -193,8 +193,8 @@ function drawCircle() {
                 // 重置球的位置和速度
                 circle_x = 160;
                 circle_y = 60;
-                xSpeed = 20;
-                ySpeed = 20;
+                xSpeed = 15;
+                ySpeed = 15;
                 hasCollided = false;
             }, 200);
         }
@@ -226,4 +226,4 @@ function drawCircle() {
     ctx.fill();
 }
 
-let game = setInterval(drawCircle, 25);
+let game = setInterval(drawCircle, 15);
