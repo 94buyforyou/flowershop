@@ -139,6 +139,10 @@ body {
 
 /* 滑鼠移動到練習作品後顯示內容方框 */
 .header2 .nav-item.practice:hover .practice_works2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     opacity: 1;
     visibility: visible;
     transition: all 0.3s ease;
