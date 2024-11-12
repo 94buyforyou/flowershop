@@ -9,11 +9,14 @@ let xSpeed = 15;
 let ySpeed = 15;
 let ground_x = 100;
 let ground_y = 550;
+let ground_width = 200;
 let ground_height = 20;
 let brickArray = [];
 let count = 0;
 let life = 5;
 let hasCollided = false; // 設定碰撞變數
+let isFlashing = false; // 控制是否顯示紅色閃爍效果
+let flashDuration = 100; // 閃爍效果持續時間 (毫秒)
 
 document.getElementById("myLife").innerHTML = "剩餘生命: " + life;
 
@@ -94,8 +97,8 @@ window.addEventListener("mousemove", (e) => {
     // 確保地板不會超出畫布的左右邊界
     if (ground_x < 0) {
         ground_x = 0;
-    } else if (ground_x > c.width - 200) {
-        ground_x = c.width - 200;
+    } else if (ground_x > c.width - ground_width) {
+        ground_x = c.width - ground_width;
     }
 });
 
@@ -151,9 +154,9 @@ function drawCircle() {
     // 確認是否撞到地板
     if (
         circle_x >= ground_x - radius &&
-        circle_x <= ground_x + 200 + radius &&
+        circle_x <= ground_x + ground_width + radius &&
         circle_y >= ground_y - radius &&
-        circle_y <= ground_y + 20
+        circle_y <= ground_y + ground_height
     ) {
         if (ySpeed > 0) {
             circle_y = ground_y - 30; // 讓球的位置更接近地板
@@ -182,6 +185,13 @@ function drawCircle() {
         hasCollided = true; // 每當碰撞一次 hasCollided 變成 true
         life--;
         document.getElementById("myLife").innerHTML = "剩餘生命: " + life;
+
+        // 生命減少的紅色閃爍效果
+        isFlashing = true;
+        setTimeout(() => {
+            isFlashing = false; // 停止閃爍效果
+        }, flashDuration);
+
         if (life == 0) {
             document.getElementById("myLife").innerHTML = "剩餘生命: " + life;
             setTimeout(() => {
@@ -203,13 +213,37 @@ function drawCircle() {
     circle_x += xSpeed;
     circle_y += ySpeed;
 
-    // 畫出黑色背景
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, c.width, c.height);
+    // 清除畫布
+    ctx.clearRect(0, 0, c.width, c.height);
+
+    if (isFlashing) {
+        // 創建從邊緣到中間漸變透明的紅色漸層
+        let gradient = ctx.createRadialGradient(
+            c.width / 2,
+            c.height / 2,
+            Math.min(c.width, c.height) / 2, // 外圓位置與半徑
+            c.width / 2,
+            c.height / 2,
+            0 // 內圓位置與半徑
+        );
+
+        // 增加更多顏色過渡點來使漸層更平滑
+        gradient.addColorStop(0, "rgba(255, 0, 0, 0.4)"); // 外圓，稍微降低透明度
+        gradient.addColorStop(0.25, "rgba(255, 0, 0, 0.3)"); // 逐漸變透明
+        gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.2)"); // 更接近中間的漸變
+        gradient.addColorStop(0.75, "rgba(255, 0, 0, 0.1)"); // 再往中間透明度減少
+        gradient.addColorStop(1, "rgba(255, 0, 0, 0)"); // 內圓完全透明
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, c.width, c.height);
+    } else {
+        ctx.fillStyle = "black"; // 畫出基本的黑色背景
+        ctx.fillRect(0, 0, c.width, c.height);
+    }
 
     // 畫出地板
     ctx.fillStyle = "red";
-    ctx.fillRect(ground_x, ground_y, 200, ground_height); // x座標, y座標, 長度, 寬度
+    ctx.fillRect(ground_x, ground_y, ground_width, ground_height); // x座標, y座標, 長度, 寬度
 
     // 畫出方塊
     brickArray.forEach((brick) => {
