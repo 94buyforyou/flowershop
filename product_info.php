@@ -325,7 +325,9 @@ $RecCategory->data_seek(0);
                             <img src="pic/logo.png" class="logo">
                         </a>
                     </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -355,15 +357,27 @@ $RecCategory->data_seek(0);
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p class="c">聯絡我們</p>
-                                    <p class="e">CONTACT</p>
-                                </a>
+                                <div class="nav-link" href="">
+                                    <p class="c">練習作品</p>
+                                    <p class="e">PRACTICE</p>
+                                </div>
+                                <div class="practice_works">
+                                    <a href="index.php">花顏巧語</a>
+                                    <a href="./snake/index.html" target="_blank">貪吃蛇</a>
+                                    <a href="./ball/index.html" target="_blank">彈跳球</a>
+                                    <a href="./password/index.html" target="_blank">終極密碼</a>
+                                    <a href="./project4/index.html" target="_blank">成績計算網站</a>
+                                </div>
                             </li>
                         </ul>
 
-                        <form class="d-flex align-items-center" role="search" name="form1" method="get" action="product.php" id="form1">
-                            <input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search" name="keyword" type="text">
+
+
+
+                        <form class="d-flex align-items-center" role="search" name="form1" method="get"
+                            action="product.php" id="form1">
+                            <input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search" name="keyword"
+                                type="text">
                             <button class="btn btn-outline-success" id="search" type="submit"></button>
                         </form>
                         <div class="header_toolbar1">
@@ -397,7 +411,8 @@ $RecCategory->data_seek(0);
     <header class="header2">
         <nav class="navbar fixed-top">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="index.php"><img src="pic/logo.png" class="logo"></a>
@@ -424,7 +439,8 @@ $RecCategory->data_seek(0);
                     </div>
                 </div>
 
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
                     <br>
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">花顏巧語 Capturing the Essence of Beauty</h5>
@@ -447,8 +463,15 @@ $RecCategory->data_seek(0);
                             <li class="nav-item">
                                 <a class="nav-link" href="#">常見問題</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">聯絡我們</a>
+                            <li class="nav-item practice">
+                                <p class="nav-link p_practice">練習作品</p>
+                                <div class="practice_works2">
+                                    <a href="index.php">花顏巧語</a>
+                                    <a href="./snake/index.html" target="_blank">貪吃蛇</a>
+                                    <a href="./ball/index.html" target="_blank">彈跳球</a>
+                                    <a href="./password/index.html" target="_blank">終極密碼</a>
+                                    <a href="./project4/index.html" target="_blank">成績計算網站</a>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="cart.php">購物車</a>
@@ -463,8 +486,10 @@ $RecCategory->data_seek(0);
                             <?php } ?>
                         </ul>
                         <div>
-                            <form class="d-flex align-items-center text-center" role="search" name="form2" method="get" action="#" id="form2">
-                                <input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search" name="keyword" type="text">
+                            <form class="d-flex align-items-center text-center" role="search" name="form2" method="get"
+                                action="#" id="form2">
+                                <input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search"
+                                    name="keyword" type="text">
                                 <button class="btn btn-outline-success" id="search" type="submit"></button>
                             </form>
                         </div>

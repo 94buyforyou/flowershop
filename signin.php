@@ -511,87 +511,102 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 	<header class="header1">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg fixed-top">
-                <div class="container-fluid">
-                    <div class="logo-container">
-                        <a class="navbar-brand" href="index.php">
-                            <img src="pic/logo.png" class="logo">
-                        </a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p class="c">品牌故事</p>
-                                    <p class="e">BRAND</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="product.php">
-                                    <p class="c">花藝商品</p>
-                                    <p class="e">PRODUCT</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p class="c">新品上市</p>
-                                    <p class="e">NEW</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p class="c">常見問題</p>
-                                    <p class="e">FAQ</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <p class="c">聯絡我們</p>
-                                    <p class="e">CONTACT</p>
-                                </a>
-                            </li>
-                        </ul>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg fixed-top">
+				<div class="container-fluid">
+					<div class="logo-container">
+						<a class="navbar-brand" href="index.php">
+							<img src="pic/logo.png" class="logo">
+						</a>
+					</div>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<p class="c">品牌故事</p>
+									<p class="e">BRAND</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="product.php">
+									<p class="c">花藝商品</p>
+									<p class="e">PRODUCT</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<p class="c">新品上市</p>
+									<p class="e">NEW</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<p class="c">常見問題</p>
+									<p class="e">FAQ</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link" href="">
+									<p class="c">練習作品</p>
+									<p class="e">PRACTICE</p>
+								</div>
+								<div class="practice_works">
+									<a href="index.php">花顏巧語</a>
+									<a href="./snake/index.html" target="_blank">貪吃蛇</a>
+									<a href="./ball/index.html" target="_blank">彈跳球</a>
+									<a href="./password/index.html" target="_blank">終極密碼</a>
+									<a href="./project4/index.html" target="_blank">成績計算網站</a>
+								</div>
+							</li>
+						</ul>
 
-                        <form class="d-flex align-items-center" role="search" name="form1" method="get" action="product.php" id="form1">
-                            <input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search" name="keyword" type="text">
-                            <button class="btn btn-outline-success" id="search" type="submit"></button>
-                        </form>
-                        <div class="header_toolbar1">
-                            <?php if (isset($_SESSION["member"]["account"]) && ($_SESSION["member"]["account"] != "")) { ?>
-                                <div class="header_toolbar1_member">
-                                    <img src="pic/member.png" class="member1 toolbar_icon">
-                                    <div class="memberlist">
-                                        <a href="member.php">會員中心</a>
-                                        <a href="logout.php">登出</a>
-                                    </div>
-                                </div>
-                            <?php } else { ?>
-                                <div class="header_toolbar1_member">
-                                    <a href="logincheck.php" class="link">
-                                        <img src="pic/member.png" class="member1 toolbar_icon">
-                                    </a>
-                                </div>
-                            <?php } ?>
-                            <div class="header_toolbar1_cart">
-                                <a href="cart.php" class="link">
-                                    <img src="pic/shopping_cart.png" class="cart1 toolbar_icon">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+
+
+
+						<form class="d-flex align-items-center" role="search" name="form1" method="get"
+							action="product.php" id="form1">
+							<input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search" name="keyword"
+								type="text">
+							<button class="btn btn-outline-success" id="search" type="submit"></button>
+						</form>
+						<div class="header_toolbar1">
+							<?php if (isset($_SESSION["member"]["account"]) && ($_SESSION["member"]["account"] != "")) { ?>
+								<div class="header_toolbar1_member">
+									<img src="pic/member.png" class="member1 toolbar_icon">
+									<div class="memberlist">
+										<a href="member.php">會員中心</a>
+										<a href="logout.php">登出</a>
+									</div>
+								</div>
+							<?php } else { ?>
+								<div class="header_toolbar1_member">
+									<a href="logincheck.php" class="link">
+										<img src="pic/member.png" class="member1 toolbar_icon">
+									</a>
+								</div>
+							<?php } ?>
+							<div class="header_toolbar1_cart">
+								<a href="cart.php" class="link">
+									<img src="pic/shopping_cart.png" class="cart1 toolbar_icon">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
 
 	<header class="header2">
 		<nav class="navbar fixed-top">
 			<div class="container-fluid">
-				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<a class="navbar-brand" href="index.php"><img src="pic/logo.png" class="logo"></a>
@@ -618,7 +633,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					</div>
 				</div>
 
-				<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+					aria-labelledby="offcanvasNavbarLabel">
 					<br>
 					<div class="offcanvas-header">
 						<h5 class="offcanvas-title" id="offcanvasNavbarLabel">花顏巧語 Capturing the Essence of Beauty</h5>
@@ -641,8 +657,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 							<li class="nav-item">
 								<a class="nav-link" href="#">常見問題</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">聯絡我們</a>
+							<li class="nav-item practice">
+								<p class="nav-link p_practice">練習作品</p>
+								<div class="practice_works2">
+									<a href="index.php">花顏巧語</a>
+									<a href="./snake/index.html" target="_blank">貪吃蛇</a>
+									<a href="./ball/index.html" target="_blank">彈跳球</a>
+									<a href="./password/index.html" target="_blank">終極密碼</a>
+									<a href="./project4/index.html" target="_blank">成績計算網站</a>
+								</div>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="cart.php">購物車</a>
@@ -657,8 +680,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 							<?php } ?>
 						</ul>
 						<div>
-							<form class="d-flex align-items-center text-center" role="search" name="form2" method="get" action="#" id="form2">
-								<input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search" name="keyword" type="text">
+							<form class="d-flex align-items-center text-center" role="search" name="form2" method="get"
+								action="#" id="form2">
+								<input class="form-control me-2" placeholder="搜尋商品..." aria-label="Search"
+									name="keyword" type="text">
 								<button class="btn btn-outline-success" id="search" type="submit"></button>
 							</form>
 						</div>
