@@ -292,10 +292,10 @@ $db_link->close();
                                 </div>
                                 <div class="practice_works">
                                     <a href="index.php">花顏巧語</a>
-                                    <a href="./snake/index.html" target="_blank">貪吃蛇</a>
-                                    <a href="./ball/index.html" target="_blank">彈跳球</a>
-                                    <a href="./password/index.html" target="_blank">終極密碼</a>
-                                    <a href="./project4/index.html" target="_blank">成績計算網站</a>
+                                    <a href="./practice/snake/index.html" target="_blank">貪吃蛇</a>
+                                    <a href="./practice/ball/index.html" target="_blank">彈跳球</a>
+                                    <a href="./practice/password/index.html" target="_blank">終極密碼</a>
+                                    <a href="./practice/score/index.html" target="_blank">成績計算網站</a>
                                 </div>
                             </li>
                         </ul>
@@ -396,10 +396,10 @@ $db_link->close();
                                 <p class="nav-link p_practice">練習作品</p>
                                 <div class="practice_works2">
                                     <a href="index.php">花顏巧語</a>
-                                    <a href="./snake/index.html" target="_blank">貪吃蛇</a>
-                                    <a href="./ball/index.html" target="_blank">彈跳球</a>
-                                    <a href="./password/index.html" target="_blank">終極密碼</a>
-                                    <a href="./project4/index.html" target="_blank">成績計算網站</a>
+                                    <a href="./practice/snake/index.html" target="_blank">貪吃蛇</a>
+                                    <a href="./practice/ball/index.html" target="_blank">彈跳球</a>
+                                    <a href="./practice/password/index.html" target="_blank">終極密碼</a>
+                                    <a href="./practice/score/index.html" target="_blank">成績計算網站</a>
                                 </div>
                             </li>
                             <li class="nav-item">
